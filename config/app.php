@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
 
+        BWF\DocumentTemplates\DocumentTemplatesServiceProvider::class,
         /*
          * Application Service Providers...
          */

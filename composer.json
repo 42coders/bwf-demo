@@ -7,11 +7,21 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../document-templates",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "bwf/document-templates": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
