@@ -23,7 +23,7 @@ class EditableTemplatesTableSeeder extends Seeder
         \BWF\DocumentTemplates\EditableTemplates\EditableTemplate::create([
             'document_template_id' => $documentTemplate->id,
             'name' => 'user_table_rows',
-            'content' => '{% for user in users %}<tr><td>{{user.id}}</td><td>{{user.name}}</td></tr>{% endfor %}' . PHP_EOL . PHP_EOL
+            'content' => '{% for user in users %}<tr><td>{{user.id}}</td><td>{{user.name}}</td></tr>{% endfor %}' . PHP_EOL . PHP_EOL.'<tr><td>{{test.name}}</td><td>{{test.title}}</td></tr>'
         ])->save();
 
         \BWF\DocumentTemplates\EditableTemplates\EditableTemplate::create([
