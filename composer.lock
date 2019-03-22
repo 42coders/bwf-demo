@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "../document-templates",
-                "reference": "fd5febacecbf542de38168cbd3214003fef4d82c"
+                "reference": "f99d5f7e2ab8852bcaf574c9f12df91647948e9e"
             },
             "require": {
                 "laravel/framework": "^5.7",
@@ -25,7 +25,8 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "BWF\\DocumentTemplates\\": "src"
+                    "BWF\\DocumentTemplates\\": "src",
+                    "BWF\\DocumentTemplates\\Tests\\": "tests"
                 }
             },
             "autoload-dev": {
