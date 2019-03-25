@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DemoDocumentTemplateModel;
 use App\DocumentTemplates\DemoDocumentTemplate;
+use App\DocumentTemplates\DemoTemplateData;
 use App\User;
 use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateFactory;
 use BWF\DocumentTemplates\Http\Controllers\DocumentTemplatesController;
@@ -11,6 +12,8 @@ use Illuminate\Http\Request;
 
 class DemoDocumentTemplatesController extends DocumentTemplatesController
 {
+    use DemoTemplateData;
+
     protected $documentClasses = [
         DemoDocumentTemplate::class
     ];
