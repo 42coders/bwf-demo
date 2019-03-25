@@ -32,10 +32,7 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
         $documentTemplate->addTemplateData($this->getTestOrders(), 'orders');
         $documentTemplate->addTemplateData($testObject, 'test');
 
-        $params = compact(
-            'documentTemplate'
-        );
+        return $documentTemplate->render();
 
-        return view('document-templates::document-templates.show', $params);
     }
 }
