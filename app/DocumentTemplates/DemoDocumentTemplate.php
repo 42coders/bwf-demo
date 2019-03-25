@@ -15,7 +15,7 @@ class DemoDocumentTemplate implements DocumentTemplateInterface
     protected function dataSources()
     {
         return [
-            $this->dataSource((new User()), 'user', true, 'users'),
+            $this->dataSource(new User(), 'user', true, 'users'),
             $this->dataSource($this->testOrders[0], 'order', true, 'orders'),
             $this->dataSource($this->getTestObject(), 'test'),
         ];
