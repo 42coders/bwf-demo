@@ -4,15 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b03656ba5b548fb5fc15f9d3e56ef3c",
+    "content-hash": "599c7ff7fd8293d62923de98d9aacbda",
     "packages": [
         {
-            "name": "bwf/document-templates",
+            "name": "42coders/document-templates",
             "version": "dev-develop",
             "dist": {
                 "type": "path",
                 "url": "../document-templates",
-                "reference": "f99d5f7e2ab8852bcaf574c9f12df91647948e9e"
+                "reference": "e6c1910472af79e6bdaabc41300a2457d8b44384"
             },
             "require": {
                 "laravel/framework": "^5.7",
@@ -23,10 +23,17 @@
                 "phpunit/phpunit": "^7.0"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "dont-discover": [],
+                    "providers": [
+                        "BWF\\DocumentTemplates\\DocumentTemplatesServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
-                    "BWF\\DocumentTemplates\\": "src",
-                    "BWF\\DocumentTemplates\\Tests\\": "tests"
+                    "BWF\\DocumentTemplates\\": "src"
                 }
             },
             "autoload-dev": {
@@ -875,16 +882,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.16.0",
+            "version": "2.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "dd16fedc022180ea4292a03aabe95e9895677911"
+                "reference": "b509524136d579f6b15ad9af4e5bd4533d1ab6c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/dd16fedc022180ea4292a03aabe95e9895677911",
-                "reference": "dd16fedc022180ea4292a03aabe95e9895677911",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/b509524136d579f6b15ad9af4e5bd4533d1ab6c2",
+                "reference": "b509524136d579f6b15ad9af4e5bd4533d1ab6c2",
                 "shasum": ""
             },
             "require": {
@@ -931,7 +938,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-03-12T09:31:40+00:00"
+            "time": "2019-03-20T12:20:01+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2624,16 +2631,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.7.3",
+            "version": "v2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "52b9a5bd41c8c53a1d784f90ca25e33bf558a6b3"
+                "reference": "ed9c49220e09bfaeb1ba4d48077c08a7b09908dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/52b9a5bd41c8c53a1d784f90ca25e33bf558a6b3",
-                "reference": "52b9a5bd41c8c53a1d784f90ca25e33bf558a6b3",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ed9c49220e09bfaeb1ba4d48077c08a7b09908dd",
+                "reference": "ed9c49220e09bfaeb1ba4d48077c08a7b09908dd",
                 "shasum": ""
             },
             "require": {
@@ -2687,7 +2694,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-03-21T14:53:02+00:00"
+            "time": "2019-03-23T14:28:58+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -4509,7 +4516,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "42coders/document-templates": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
