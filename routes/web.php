@@ -15,4 +15,5 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+\BWF\DocumentTemplates\DocumentTemplate::routes('DemoDocumentTemplatesController');
 

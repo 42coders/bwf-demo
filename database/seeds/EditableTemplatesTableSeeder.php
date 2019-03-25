@@ -13,7 +13,7 @@ class EditableTemplatesTableSeeder extends Seeder
     {
         $documentTemplate = \BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateModel::create([
             'name' => 'Document Template',
-            'document_class' => \BWF\DocumentTemplates\Tests\DocumentTemplates\DemoDocumentTemplate::class,
+            'document_class' => \App\DocumentTemplates\DemoDocumentTemplate::class,
             'layout' => 'TestIterableDataSource.html.twig'
         ]);
 

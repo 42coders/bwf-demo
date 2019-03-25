@@ -2,13 +2,16 @@
 
 namespace App;
 
+use BWF\DocumentTemplates\TemplateDataSources\ModelProvidesTemplateData;
+use BWF\DocumentTemplates\TemplateDataSources\TemplateDataSourceInterface;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements TemplateDataSourceInterface
 {
     use Notifiable;
+    use ModelProvidesTemplateData;
 
     /**
      * The attributes that are mass assignable.
