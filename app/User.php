@@ -39,4 +39,9 @@ class User extends Authenticatable implements TemplateDataSourceInterface
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected function getTemplateFields()
+    {
+        return $this->fillable;
+    }
 }
