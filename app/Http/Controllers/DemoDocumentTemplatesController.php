@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\DemoDocumentTemplateModel;
 use App\DocumentTemplates\DemoDocumentTemplate;
+use App\DocumentTemplates\DemoDocumentTemplate2;
 use App\DocumentTemplates\DemoTemplateData;
 use App\User;
 use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateFactory;
@@ -15,7 +16,8 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
     use DemoTemplateData;
 
     protected $documentClasses = [
-        DemoDocumentTemplate::class
+        DemoDocumentTemplate::class,
+        DemoDocumentTemplate2::class
     ];
 
     public function show(Request $request, $id)
