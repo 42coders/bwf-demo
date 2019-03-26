@@ -37308,7 +37308,7 @@ var render = function() {
                       "\n                        {% for " +
                         _vm._s(placeholder[0].split(".")[0]) +
                         " in " +
-                        _vm._s(placeholder[0]) +
+                        _vm._s(index) +
                         " %}\n                        "
                     ),
                     _c(
