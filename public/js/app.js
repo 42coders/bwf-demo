@@ -37103,8 +37103,7 @@ var render = function() {
                   type: "text",
                   id: "exampleFormControlInput1",
                   name: "name",
-                  placeholder: "Document name",
-                  value: "Document name"
+                  placeholder: "Document name"
                 },
                 domProps: { value: _vm.documentTemplate.name },
                 on: {
