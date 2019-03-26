@@ -1986,7 +1986,7 @@ __webpack_require__.r(__webpack_exports__);
         templates: this.templates
       }).then(function (_ref3) {
         var data = _ref3.data;
-        _this4.documentTemplate = data.documentTemplate;
+        _this4.documentTemplate = data.documentTemplate, _this4.templates = data.templates;
       });
     }
   }
@@ -37284,7 +37284,10 @@ var render = function() {
               "a",
               {
                 staticClass: "btn btn-secondary mb-2",
-                attrs: { target: "_blank", href: "" }
+                attrs: {
+                  target: "_blank",
+                  href: "/document-templates" + this.id()
+                }
               },
               [_vm._v("Render")]
             )
