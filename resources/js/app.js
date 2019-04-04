@@ -28,6 +28,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// require('./../vendor/document-templates/resources/js/app');
+require('./../../vendor/42coders/document-templates/resources/js/app');
+
 const app = new Vue({
     el: '#app'
 });
