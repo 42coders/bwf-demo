@@ -1923,12 +1923,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['initialData'],
+  props: ['initialData', 'baseUrl'],
   data: function data() {
     var _this = this;
 
     return {
+      ACTIONS: {
+        SAVE: 'save',
+        GET_TEMPLATES: 'getTemplates',
+        GET_PLACEHOLDERS: 'getPaceholders'
+      },
       id: function id() {
         return _this.documentTemplate.id ? '/' + _this.documentTemplate.id : '';
       },
@@ -1936,12 +1960,16 @@ __webpack_require__.r(__webpack_exports__);
       placeholders: this.initialData.placeholders,
       templates: this.initialData.templates,
       layouts: this.initialData.layouts,
-      documentTemplate: this.initialData.documentTemplate
+      documentTemplate: this.initialData.documentTemplate,
+      isRequestPending: false,
+      actionPending: ''
     };
   },
   mounted: function mounted() {
     console.log('Component mounted.');
     console.log(this.initialData);
+    console.log(this.baseUrl);
+    this.init();
   },
   methods: {
     handleLayoutChange: function handleLayoutChange(e) {
@@ -1950,43 +1978,84 @@ __webpack_require__.r(__webpack_exports__);
     handleClassChange: function handleClassChange(e) {
       this.getPlaceholders();
     },
-    getTemplates: function getTemplates() {
+    init: function init() {
       var _this2 = this;
 
+      axios.interceptors.request.use(function (config) {
+        _this2.isRequestPending = true;
+        _this2.actionPending = config.action;
+        return config;
+      });
+      axios.interceptors.response.use(function (response) {
+        _this2.isRequestPending = false;
+        _this2.actionPending = '';
+        return response;
+      });
+    },
+    getTemplates: function getTemplates() {
+      var _this3 = this;
+
       console.log(this.templates);
-      axios.post('/document-templates/templates' + this.id(), {
-        layout: this.documentTemplate.layout,
-        document_class: this.documentTemplate.document_class
+      this.templates = [];
+      axios.request({
+        url: 'templates' + this.id(),
+        method: 'post',
+        baseURL: this.baseUrl,
+        action: this.ACTIONS.GET_TEMPLATES,
+        data: {
+          layout: this.documentTemplate.layout,
+          document_class: this.documentTemplate.document_class
+        }
       }).then(function (_ref) {
         var data = _ref.data;
         console.log(data);
-        _this2.templates = data;
+        _this3.templates = data;
       });
     },
     getPlaceholders: function getPlaceholders() {
-      var _this3 = this;
+      var _this4 = this;
 
-      axios.post('/document-templates/placeholders' + this.id(), {
-        layout: this.documentTemplate.layout,
-        document_class: this.documentTemplate.document_class
+      this.placeholders = [];
+      axios.request({
+        method: 'post',
+        url: 'placeholders' + this.id(),
+        baseURL: this.baseUrl,
+        action: this.ACTIONS.GET_PLACEHOLDERS,
+        data: {
+          layout: this.documentTemplate.layout,
+          document_class: this.documentTemplate.document_class
+        }
       }).then(function (_ref2) {
         var data = _ref2.data;
         console.log(data);
-        _this3.placeholders = data;
+        _this4.placeholders = data;
       });
     },
     save: function save() {
-      var _this4 = this;
+      var _this5 = this;
 
-      var method = this.id() ? axios.put : axios.post;
-      method('/document-templates' + this.id(), {
-        name: this.documentTemplate.name,
-        layout: this.documentTemplate.layout,
-        document_class: this.documentTemplate.document_class,
-        templates: this.templates
+      var method = this.id() ? 'put' : 'post';
+      axios.request({
+        url: this.id(),
+        method: method,
+        baseURL: this.baseUrl,
+        action: this.ACTIONS.SAVE,
+        data: {
+          name: this.documentTemplate.name,
+          layout: this.documentTemplate.layout,
+          document_class: this.documentTemplate.document_class,
+          templates: this.templates
+        }
       }).then(function (_ref3) {
         var data = _ref3.data;
-        _this4.documentTemplate = data.documentTemplate, _this4.templates = data.templates;
+
+        if (data.redirect) {
+          window.location.href = data.redirect;
+          return;
+        }
+
+        _this5.documentTemplate = data.documentTemplate;
+        _this5.templates = data.templates;
       });
     }
   }
@@ -37216,11 +37285,24 @@ var render = function() {
                       return _c(
                         "option",
                         { domProps: { value: documentClass } },
-                        [_vm._v(_vm._s(documentClass))]
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(documentClass) +
+                              "\n                        "
+                          )
+                        ]
                       )
                     }),
                     0
                   )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.isRequestPending &&
+            _vm.actionPending == _vm.ACTIONS.GET_TEMPLATES
+              ? _c("div", { staticClass: "d-flex justify-content-center" }, [
+                  _vm._m(0)
                 ])
               : _vm._e(),
             _vm._v(" "),
@@ -37276,7 +37358,15 @@ var render = function() {
                 staticClass: "btn btn-primary mb-2",
                 attrs: { type: "submit" }
               },
-              [_vm._v("Save")]
+              [
+                _vm.isRequestPending && _vm.actionPending == _vm.ACTIONS.SAVE
+                  ? _c("span", {
+                      staticClass: "spinner-border spinner-border-sm",
+                      attrs: { role: "status", "aria-hidden": "true" }
+                    })
+                  : _vm._e(),
+                _vm._v("\n                    Save\n                ")
+              ]
             ),
             _vm._v(" "),
             _c(
@@ -37297,6 +37387,13 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-3" }, [
         _c("h4", [_vm._v("Placeholders")]),
+        _vm._v(" "),
+        _vm.isRequestPending &&
+        _vm.actionPending == _vm.ACTIONS.GET_PLACEHOLDERS
+          ? _c("div", { staticClass: "d-flex justify-content-center" }, [
+              _vm._m(1)
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "ul",
@@ -37339,7 +37436,28 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-border", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
+  }
+]
 render._withStripped = true
 
 
