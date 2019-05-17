@@ -9,13 +9,13 @@ Clone the source code from:
 https://bitbucket.org/maxhutschenreiter/bwf-demo.git
 ```
 
+Install the required packages with composer: `composer install`.
+
 Create database, and set up the parameters in the `.env` file, generate application key with the `php artisan key:generate` command. 
 
 Run the migration and seed the database: `php artisan migrate --seed`.
 
-Install the required packages with composer: `composer install`.
-
-### Development
+## Development
 If you would like to use the demo application in development mode, e.g. to immediately see the changes you made in the packages it is necessary to clone the package beside the demo application and run a composer update to use the symlink-ed version of the package. For the details see the repositories section of the `composer.json` file.
 
 ## Contribution
