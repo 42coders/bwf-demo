@@ -11,11 +11,18 @@ trait DemoTemplateData
     protected $testOrders = [
         [
             'id' => '1',
-            'description' => 'first order description',
+            'description' => 'Package Basic',
+            'price' => 10
         ],
         [
             'id' => '2',
-            'description' => 'second order description'
+            'description' => 'Package Pro',
+            'price' => 20
+        ],
+        [
+            'id' => '3',
+            'description' => 'Package Advanced',
+            'price' => 30
         ],
     ];
 
