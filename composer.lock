@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c483786e96c7c3ef65b1d9fc9fe29f20",
+    "content-hash": "f6585b80ef2ec30bc887aa09e037f9d7",
     "packages": [
         {
             "name": "42coders/document-templates",
-            "version": "0.3.2",
+            "version": "0.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/maxhutschenreiter/document-templates.git",
+                "reference": "c01e467ebc994c8e52a1cb895da13c7e517f4306"
+            },
             "dist": {
-                "type": "path",
-                "url": "../document-templates",
-                "reference": "d0ba29c86e3369d816ee26b867a6073acd06e591"
+                "type": "zip",
+                "url": "https://bitbucket.org/maxhutschenreiter/document-templates/get/c01e467ebc994c8e52a1cb895da13c7e517f4306.zip",
+                "reference": "c01e467ebc994c8e52a1cb895da13c7e517f4306",
+                "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "^2.9",
@@ -21,6 +27,7 @@
                 "twig/twig": "^2.0"
             },
             "require-dev": {
+                "liip/rmt": "^1.5",
                 "orchestra/testbench": "^3.5",
                 "orchestra/testbench-browser-kit": "^3.5",
                 "phpunit/phpunit": "^7.0"
@@ -62,9 +69,11 @@
                 }
             ],
             "description": "Document template management package.",
-            "transport-options": {
-                "symlink": true
-            }
+            "homepage": "https://bitbucket.org/maxhutschenreiter/document-templates",
+            "support": {
+                "source": "https://bitbucket.org/maxhutschenreiter/document-templates/src/c01e467ebc994c8e52a1cb895da13c7e517f4306/?at=0.3.3"
+            },
+            "time": "2019-06-18T07:44:41+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
