@@ -1696,7 +1696,14 @@ CKEDITOR.plugins.add('placeholder_select', {
     });
     var lang = editor.lang.placeholder; // Put ur init code here.
 
-    editor.widgets.add('placeholder', {// Widget code.
+    editor.widgets.add('placeholder', {
+      init: function init() {
+        // Note that placeholder markup characters are stripped for the name.
+        this.setData('name', this.element.getText());
+      },
+      downcast: function downcast() {
+        return new CKEDITOR.htmlParser.text(this.data.name);
+      }
     });
   },
   afterInit: function afterInit(editor) {
@@ -1709,7 +1716,7 @@ CKEDITOR.plugins.add('placeholder_select', {
         if (dtd && !dtd.span) return;
         return _text.replace(placeholderReplaceRegex, function (match) {
           // Creating widget code.
-          var widgetWrapper = null,
+          var widgetWrapper,
               innerElement = new CKEDITOR.htmlParser.element('span', {
             'class': 'cke_placeholder'
           }); // Adds placeholder identifier as innertext.
@@ -3557,9 +3564,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    console.log('Component mounted.');
-    console.log(this.initialData);
-    console.log(this.baseUrl);
     this.init();
   },
   watch: {
@@ -3615,9 +3619,39 @@ __webpack_require__.r(__webpack_exports__);
 
         CKEDITOR.replace(editorId, {
           customConfig: '',
+          allowedContent: true,
           extraPlugins: 'richcombo,placeholder_select',
           toolbarGroups: [{
-            name: 'basicstyles'
+            name: 'document',
+            groups: ['mode', 'document', 'doctools']
+          }, {
+            name: 'clipboard',
+            groups: ['clipboard', 'undo']
+          }, {
+            name: 'editing',
+            groups: ['find', 'selection', 'spellchecker']
+          }, {
+            name: 'forms'
+          }, '/', {
+            name: 'basicstyles',
+            groups: ['basicstyles', 'cleanup']
+          }, {
+            name: 'paragraph',
+            groups: ['list', 'indent', 'blocks', 'align', 'bidi']
+          }, {
+            name: 'links'
+          }, {
+            name: 'insert'
+          }, '/', {
+            name: 'styles'
+          }, {
+            name: 'colors'
+          }, {
+            name: 'tools'
+          }, {
+            name: 'others'
+          }, {
+            name: 'about'
           }, '/', {
             name: 'placeholder_select'
           }],
@@ -3625,9 +3659,20 @@ __webpack_require__.r(__webpack_exports__);
             placeholders: _this.placeholders
           }
         });
-        CKEDITOR.instances[editorId].on('change', function () {
-          var ckeditorData = CKEDITOR.instances[editorId].getData();
-          template.content = ckeditorData;
+        var editor = CKEDITOR.instances[editorId];
+        editor.on('change', function () {
+          template.content = editor.getData();
+        }); // The change event doesn't work in source editing mode, must use the key event
+        // @see https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editor.html#event-change
+
+        editor.on('mode', function () {
+          if (this.mode === 'source') {
+            template.content = editor.getData();
+            var editable = editor.editable();
+            editable.attachListener(editable, 'key', function () {
+              template.content = editor.getData();
+            });
+          }
         });
       });
     },

@@ -12,9 +12,9 @@ class EditableTemplatesTableSeeder extends Seeder
     public function run()
     {
         $documentTemplate = \BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateModel::create([
-            'name' => 'Document Template',
-            'document_class' => \App\DocumentTemplates\DemoDocumentTemplate::class,
-            'layout' => 'TestIterableDataSource.html.twig'
+            'name' => 'Invoice',
+            'document_class' => \App\DocumentTemplates\InvoiceTemplate::class,
+            'layout' => 'InvoiceTemplate.html.twig'
         ]);
 
         $documentTemplate->save();
@@ -22,14 +22,19 @@ class EditableTemplatesTableSeeder extends Seeder
 
         \BWF\DocumentTemplates\EditableTemplates\EditableTemplate::create([
             'document_template_id' => $documentTemplate->id,
-            'name' => 'user_table_rows',
-            'content' => '{% for user in users %}<tr><td>{{user.id}}</td><td>{{user.name}}</td></tr>{% endfor %}' . PHP_EOL . PHP_EOL.'<tr><td>{{test.name}}</td><td>{{test.title}}</td></tr>'
-        ])->save();
-
-        \BWF\DocumentTemplates\EditableTemplates\EditableTemplate::create([
-            'document_template_id' => $documentTemplate->id,
-            'name' => 'order_table_rows',
-            'content' => '{% for order in orders %}<tr><td>{{order.id}}</td><td>{{order.description}}</td></tr>{% endfor %}' . PHP_EOL . PHP_EOL
+            'name' => 'order_items',
+            'content' => '
+                <p>{% for order in orders %}</p>
+                
+                <div class="invoice-item">
+                <p><i class="uil uil-cart">&nbsp;</i></p>
+                
+                <p class="item">{{order.description}}</p>
+                
+                <p class="item item-price">${{order.price}}</p>
+                </div>
+                
+                <p>{% endfor %}</p>'
         ])->save();
     }
 }
