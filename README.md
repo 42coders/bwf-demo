@@ -19,4 +19,5 @@ Run the migration and seed the database: `php artisan migrate --seed`.
 If you would like to use the demo application in development mode, e.g. to immediately see the changes you made in the packages it is necessary to clone the package beside the demo application and run a composer update to use the symlink-ed version of the package. For the details see the repositories section of the `composer.json` file.
 
 ## Contribution
-Every contribution is welcome. We should use the usual [GitFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) like workflow: create branches for features and bug fixes, when the development has been finished create a pull request to the `develop` and it will be reviewed by other developer, and merged/commented/declined accordingly. 
+Every contribution is welcome. We should use the usual [GitFlow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow) like workflow: create branches for features and bug fixes, when the development has been finished create a pull request to the `develop` and it will be reviewed by other developer, and merged/commented/declined accordingly.
+ 
