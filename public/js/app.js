@@ -1632,17 +1632,6 @@ function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PlaceholderGroup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlaceholderGroup */ "../document-templates/resources/js/ckeditor/plugins/placeholder_select/PlaceholderGroup.js");
-/**
- * A plugin to enable placeholder tokens to be inserted into the CKEditor message. Use on its own or with teh placeholder plugin.
- * The default format is compatible with the placeholders syntex
- *
- * @version 0.1
- * @Author Troy Lutton
- * @license MIT
- *
- * This is a pure modification for the placeholders plugin. All credit goes to Stuart Sillitoe for creating the original (stuartsillitoe.co.uk)
- *
- */
 
 CKEDITOR.plugins.add('placeholder_select', {
   requires: ['richcombo'],
@@ -1698,7 +1687,6 @@ CKEDITOR.plugins.add('placeholder_select', {
 
     editor.widgets.add('placeholder', {
       init: function init() {
-        // Note that placeholder markup characters are stripped for the name.
         this.setData('name', this.element.getText());
       },
       downcast: function downcast() {
