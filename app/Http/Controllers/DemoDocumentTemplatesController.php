@@ -7,6 +7,8 @@ use App\DocumentTemplates\DemoDocumentTemplate;
 use App\DocumentTemplates\DemoDocumentTemplate2;
 use App\DocumentTemplates\DemoTemplateData;
 use App\DocumentTemplates\InvoiceTemplate;
+use App\DocumentTemplates\NewsletterTemplate;
+use App\DocumentTemplates\NewsletterTemplateData;
 use App\User;
 use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateFactory;
 use BWF\DocumentTemplates\Http\Controllers\DocumentTemplatesController;
@@ -15,10 +17,12 @@ use Illuminate\Http\Request;
 class DemoDocumentTemplatesController extends DocumentTemplatesController
 {
     use DemoTemplateData;
+    use NewsletterTemplateData;
 
     protected $documentClasses = [
 //        DemoDocumentTemplate::class,
-        InvoiceTemplate::class
+        InvoiceTemplate::class,
+        NewsletterTemplate::class
     ];
 
     public function show(Request $request, $id)
@@ -27,13 +31,9 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
         $documentTemplateModel = DemoDocumentTemplateModel::findOrFail($id);
         $documentTemplate = DocumentTemplateFactory::build($documentTemplateModel);
 
-        $testObject = new \stdClass();
-        $testObject->title = 'This is the object\'s title';
-        $testObject->name = 'This is the object\'s name';
-
-        $documentTemplate->addTemplateData(User::all(), 'users');
+        $documentTemplate->addTemplateData(User::first(), 'user');
         $documentTemplate->addTemplateData($this->getTestOrders(), 'orders');
-        $documentTemplate->addTemplateData($testObject, 'test');
+        $documentTemplate->addTemplateData($this->getFood(), 'foods');
 
         return $documentTemplate->render();
 
