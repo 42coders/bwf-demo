@@ -1358,6 +1358,92 @@ __webpack_require__(/*! ./ckeditor/plugins/placeholder_select/plugin */ "../docu
 
 /***/ }),
 
+/***/ "../document-templates/resources/js/ckeditor/TemplateEditor.js":
+/*!*********************************************************************!*\
+  !*** ../document-templates/resources/js/ckeditor/TemplateEditor.js ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return TemplateEditor; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var TemplateEditor =
+/*#__PURE__*/
+function () {
+  function TemplateEditor(id, placeholders) {
+    _classCallCheck(this, TemplateEditor);
+
+    this.id = id;
+    this.placeholders = placeholders;
+  }
+
+  _createClass(TemplateEditor, [{
+    key: "init",
+    value: function init() {
+      if (CKEDITOR.instances.hasOwnProperty(this.id)) {
+        CKEDITOR.instances[this.id].destroy();
+      }
+
+      CKEDITOR.replace(this.id, {
+        customConfig: '',
+        allowedContent: true,
+        extraPlugins: 'richcombo,placeholder_select',
+        toolbarGroups: [{
+          name: 'document',
+          groups: ['mode', 'document', 'doctools']
+        }, {
+          name: 'clipboard',
+          groups: ['clipboard', 'undo']
+        }, {
+          name: 'editing',
+          groups: ['find', 'selection', 'spellchecker']
+        }, {
+          name: 'forms'
+        }, '/', {
+          name: 'basicstyles',
+          groups: ['basicstyles', 'cleanup']
+        }, {
+          name: 'paragraph',
+          groups: ['list', 'indent', 'blocks', 'align', 'bidi']
+        }, {
+          name: 'links'
+        }, {
+          name: 'insert'
+        }, '/', {
+          name: 'styles'
+        }, {
+          name: 'colors'
+        }, {
+          name: 'tools'
+        }, {
+          name: 'others'
+        }, {
+          name: 'about'
+        }, '/', {
+          name: 'placeholder_select'
+        }],
+        placeholder_select: {
+          placeholders: this.placeholders
+        },
+        protectedSource: [/{%([^{}])+%}/g]
+      });
+    }
+  }]);
+
+  return TemplateEditor;
+}();
+
+
+
+/***/ }),
+
 /***/ "../document-templates/resources/js/ckeditor/plugins/placeholder_select/IterablePlaceholder.js":
 /*!*****************************************************************************************************!*\
   !*** ../document-templates/resources/js/ckeditor/plugins/placeholder_select/IterablePlaceholder.js ***!
@@ -1663,6 +1749,10 @@ CKEDITOR.plugins.add('placeholder_select', {
         className: 'cke_format',
         multiSelect: false,
         toolbar: 'placeholder_select',
+        modes: {
+          wysiwyg: 1,
+          source: 1
+        },
         panel: {
           css: [editor.config.contentsCss, CKEDITOR.skin.getPath('editor')],
           voiceLabel: editor.lang.panelVoiceLabel
@@ -1678,7 +1768,15 @@ CKEDITOR.plugins.add('placeholder_select', {
         onClick: function onClick(value) {
           editor.focus();
           editor.fire('saveSnapshot');
-          editor.insertHtml(value);
+
+          if (editor.mode == 'wysiwyg') {
+            editor.insertHtml(value);
+          } else {
+            var caretPosition = $(editor.container.$).find('.cke_source')[0].selectionStart || 0,
+                textAreaValue = editor.getData();
+            editor.setData(textAreaValue.substring(0, caretPosition) + value + textAreaValue.substring(caretPosition));
+          }
+
           editor.fire('saveSnapshot');
         }
       });
@@ -3468,6 +3566,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ckeditor_TemplateEditor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../ckeditor/TemplateEditor */ "../document-templates/resources/js/ckeditor/TemplateEditor.js");
 //
 //
 //
@@ -3528,6 +3627,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['initialData', 'baseUrl'],
   data: function data() {
@@ -3599,54 +3699,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.templates.forEach(function (template, index) {
-        var editorId = _this.createEditorId(index);
+        var editorId = _this.createEditorId(index),
+            templateEditor = new _ckeditor_TemplateEditor__WEBPACK_IMPORTED_MODULE_0__["default"](editorId, _this.placeholders);
 
-        if (CKEDITOR.instances.hasOwnProperty(editorId)) {
-          CKEDITOR.instances[editorId].destroy();
-        }
-
-        CKEDITOR.replace(editorId, {
-          customConfig: '',
-          allowedContent: true,
-          extraPlugins: 'richcombo,placeholder_select',
-          toolbarGroups: [{
-            name: 'document',
-            groups: ['mode', 'document', 'doctools']
-          }, {
-            name: 'clipboard',
-            groups: ['clipboard', 'undo']
-          }, {
-            name: 'editing',
-            groups: ['find', 'selection', 'spellchecker']
-          }, {
-            name: 'forms'
-          }, '/', {
-            name: 'basicstyles',
-            groups: ['basicstyles', 'cleanup']
-          }, {
-            name: 'paragraph',
-            groups: ['list', 'indent', 'blocks', 'align', 'bidi']
-          }, {
-            name: 'links'
-          }, {
-            name: 'insert'
-          }, '/', {
-            name: 'styles'
-          }, {
-            name: 'colors'
-          }, {
-            name: 'tools'
-          }, {
-            name: 'others'
-          }, {
-            name: 'about'
-          }, '/', {
-            name: 'placeholder_select'
-          }],
-          placeholder_select: {
-            placeholders: _this.placeholders
-          }
-        });
+        templateEditor.init();
         var editor = CKEDITOR.instances[editorId];
         editor.on('change', function () {
           template.content = editor.getData();
