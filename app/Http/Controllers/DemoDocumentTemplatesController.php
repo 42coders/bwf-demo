@@ -15,6 +15,7 @@ use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateModel;
 use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateModelInterface;
 use BWF\DocumentTemplates\Http\Controllers\DocumentTemplatesController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use BWF\DocumentTemplates\MailTemplates\TemplateMailable;
 
@@ -32,7 +33,7 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
     protected function getTemplateData()
     {
         return [
-            'user' => User::first(),
+            'user' => Auth::user(),
             'orders' => $this->getTestOrders(),
             'foods' => $this->getFood(),
             'dates' => $this->getDates()
@@ -57,7 +58,7 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
 
     public function email(Request $request, DocumentTemplateModel $documentTemplate)
     {
-        $user = User::first();
+        $user = Auth::user();
         Mail::to($user)->send(new TemplateMailable($documentTemplate, $this->getTemplateData()));
 
         return back();
