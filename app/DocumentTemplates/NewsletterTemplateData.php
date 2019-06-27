@@ -5,6 +5,7 @@ namespace App\DocumentTemplates;
 
 use BWF\DocumentTemplates\TemplateDataSources\TemplateDataSource;
 use BWF\DocumentTemplates\TemplateDataSources\TemplateDataSourceFactory;
+use Carbon\Carbon;
 
 trait NewsletterTemplateData
 {
@@ -43,5 +44,15 @@ trait NewsletterTemplateData
         }
 
         return collect($dataSources);
+    }
+
+    protected function getDates()
+    {
+        $dates = [
+            'from' => Carbon::now()->format('Y-m-d'),
+            'to' => Carbon::now()->add(7, 'day')->format('Y-m-d')
+        ];
+
+        return TemplateDataSourceFactory::build( $dates, 'dates' );
     }
 }

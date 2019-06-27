@@ -34,6 +34,7 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
         $documentTemplate->addTemplateData(User::first(), 'user');
         $documentTemplate->addTemplateData($this->getTestOrders(), 'orders');
         $documentTemplate->addTemplateData($this->getFood(), 'foods');
+        $documentTemplate->addTemplateData($this->getDates(), 'dates');
 
         return $documentTemplate->render();
 
