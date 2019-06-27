@@ -56,5 +56,11 @@ class EditableTemplatesTableSeeder extends Seeder
                     {% endfor %}
                 </ul>'
         ])->save();
+
+        \BWF\DocumentTemplates\EditableTemplates\EditableTemplate::create([
+            'document_template_id' => $documentTemplate->id,
+            'name' => 'greeting',
+            'content' => '<p>Hi,&nbsp;{{user.name}}</p>'
+        ])->save();
     }
 }

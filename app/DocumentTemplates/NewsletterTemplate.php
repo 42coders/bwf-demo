@@ -4,12 +4,12 @@
 namespace App\DocumentTemplates;
 
 use App\User;
-use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplate;
-use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateInterface;
+use BWF\DocumentTemplates\MailTemplates\MailTemplate;
+use BWF\DocumentTemplates\MailTemplates\MailTemplateInterface;
 
-class NewsletterTemplate implements DocumentTemplateInterface
+class NewsletterTemplate implements MailTemplateInterface
 {
-    use DocumentTemplate;
+    use MailTemplate;
     use NewsletterTemplateData;
 
     protected function dataSources()

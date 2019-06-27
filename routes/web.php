@@ -17,3 +17,4 @@ Auth::routes();
 
 \BWF\DocumentTemplates\DocumentTemplates::routes(DemoDocumentTemplatesController::class);
 
+Route::post('/document-templates/email/{documentTemplate?}', 'DemoDocumentTemplatesController@email')->name('document-templates.email');

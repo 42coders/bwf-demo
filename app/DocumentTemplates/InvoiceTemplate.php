@@ -4,12 +4,12 @@
 namespace App\DocumentTemplates;
 
 use App\User;
-use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplate;
-use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateInterface;
+use BWF\DocumentTemplates\MailTemplates\MailTemplate;
+use BWF\DocumentTemplates\MailTemplates\MailTemplateInterface;
 
-class InvoiceTemplate implements DocumentTemplateInterface
+class InvoiceTemplate implements MailTemplateInterface
 {
-    use DocumentTemplate;
+    use MailTemplate;
     use DemoTemplateData;
 
     protected function dataSources()
