@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "623f413be840c79bc16c90081429cf53",
+    "content-hash": "1aa781eeafd9ed8e951234675ec205c4",
     "packages": [
         {
             "name": "42coders/document-templates",
-            "version": "0.3.7",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/maxhutschenreiter/document-templates.git",
-                "reference": "1f38f48ed14f049db28ee99c78b840e15eff9c08"
+                "reference": "9f1e7ed3ccea957fdb00d77f055e2ff04829bd01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/maxhutschenreiter/document-templates/get/1f38f48ed14f049db28ee99c78b840e15eff9c08.zip",
-                "reference": "1f38f48ed14f049db28ee99c78b840e15eff9c08",
+                "url": "https://bitbucket.org/maxhutschenreiter/document-templates/get/9f1e7ed3ccea957fdb00d77f055e2ff04829bd01.zip",
+                "reference": "9f1e7ed3ccea957fdb00d77f055e2ff04829bd01",
                 "shasum": ""
             },
             "require": {
@@ -71,9 +71,9 @@
             "description": "Document template management package.",
             "homepage": "https://bitbucket.org/maxhutschenreiter/document-templates",
             "support": {
-                "source": "https://bitbucket.org/maxhutschenreiter/document-templates/src/1f38f48ed14f049db28ee99c78b840e15eff9c08/?at=0.3.7"
+                "source": "https://bitbucket.org/maxhutschenreiter/document-templates/src/9f1e7ed3ccea957fdb00d77f055e2ff04829bd01/?at=0.4.0"
             },
-            "time": "2019-06-27T09:12:15+00:00"
+            "time": "2019-06-27T14:29:17+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
