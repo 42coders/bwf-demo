@@ -49,8 +49,9 @@ trait NewsletterTemplateData
     protected function getDates()
     {
         $dates = [
+            'last' => Carbon::now()->subtract(2, 'months')->format('Y-m-d'),
             'from' => Carbon::now()->format('Y-m-d'),
-            'to' => Carbon::now()->add(7, 'day')->format('Y-m-d')
+            'to' => Carbon::now()->add(7, 'days')->format('Y-m-d')
         ];
 
         return TemplateDataSourceFactory::build( $dates, 'dates' );
