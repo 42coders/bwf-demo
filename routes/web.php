@@ -13,8 +13,10 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+Route::group(['middleware' => ['verified']], function() {
+    \BWF\DocumentTemplates\DocumentTemplates::routes(DemoDocumentTemplatesController::class);
 
-\BWF\DocumentTemplates\DocumentTemplates::routes(DemoDocumentTemplatesController::class);
-
-Route::post('/document-templates/email/{documentTemplate?}', 'DemoDocumentTemplatesController@email')->name('document-templates.email');
+    Route::post('/document-templates/email/{documentTemplate?}',
+        'DemoDocumentTemplatesController@email')->name('document-templates.email');
+});
