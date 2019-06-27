@@ -4,6 +4,11 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <table class="table" cellspacing="0" width="100%">
                     <thead>
                     <tr>

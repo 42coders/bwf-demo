@@ -61,6 +61,6 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
         $user = Auth::user();
         Mail::to($user)->send(new TemplateMailable($documentTemplate, $this->getTemplateData()));
 
-        return back();
+        return back()->with('status', sprintf('The email has been sent to %s!', $user->email));
     }
 }
