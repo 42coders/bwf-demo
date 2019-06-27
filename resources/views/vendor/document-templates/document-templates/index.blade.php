@@ -27,10 +27,10 @@
                                     <a class="btn btn btn-primary" target="_blank" href="{{route('document-templates.show', $documentTempate->id)}}">Render</a>
                                 </td>
                                 <td>
-{{--                                    <form method="post" action="{{route('document-templates.email', $documentTempate->id)}}">--}}
-{{--                                        @csrf--}}
-{{--                                        <button class="btn btn-primary" type="submit">Email</button>--}}
-{{--                                    </form>--}}
+                                    <form method="post" action="{{route('document-templates.email', $documentTempate->id)}}">
+                                        @csrf
+                                        <button class="btn btn-primary" type="submit">Email</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
