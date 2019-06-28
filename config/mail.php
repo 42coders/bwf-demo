@@ -133,4 +133,6 @@ return [
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 
+    'bcc_address' => env('MAIL_BCC_ADDRESS')
+
 ];

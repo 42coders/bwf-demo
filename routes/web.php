@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-
 Auth::routes(['verify' => true]);
+
 Route::group(['middleware' => ['verified']], function() {
+    Route::get('/', 'HomeController@index')->name('home');
+
     \BWF\DocumentTemplates\DocumentTemplates::routes(DemoDocumentTemplatesController::class);
 
     Route::post('/document-templates/email/{documentTemplate?}',

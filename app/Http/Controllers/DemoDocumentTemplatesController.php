@@ -15,6 +15,7 @@ use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateModel;
 use BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateModelInterface;
 use BWF\DocumentTemplates\Http\Controllers\DocumentTemplatesController;
 use Illuminate\Http\Request;
+use Illuminate\Mail\PendingMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use BWF\DocumentTemplates\MailTemplates\TemplateMailable;
@@ -56,10 +57,39 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
 
     }
 
+    /**
+     * @param PendingMail $mailer
+     * @return PendingMail
+     */
+    private function setBcc(PendingMail $mailer){
+
+        $bccAddress = config('mail.bcc_address');
+
+        if(empty($bccAddress)){
+            return $mailer;
+        }
+
+        $bccUser = new User();
+        $bccUser->email = $bccAddress;
+
+        $mailer->bcc($bccUser);
+
+        return $mailer;
+    }
+
+    /**
+     * @param Request $request
+     * @param DocumentTemplateModel $documentTemplate
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function email(Request $request, DocumentTemplateModel $documentTemplate)
     {
         $user = Auth::user();
-        Mail::to($user)->send(new TemplateMailable($documentTemplate, $this->getTemplateData()));
+
+        $mailer = Mail::to($user);
+        $mailer = $this->setBcc($mailer);
+        $mailer->send(new TemplateMailable($documentTemplate, $this->getTemplateData()));
 
         return back()->with('status', sprintf('The email has been sent to %s!', $user->email));
     }
