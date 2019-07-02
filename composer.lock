@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "42coders/document-templates",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/maxhutschenreiter/document-templates.git",
-                "reference": "9f1e7ed3ccea957fdb00d77f055e2ff04829bd01"
+                "reference": "c13bd41664ce08a9a12e1ccd73c15815018fb49f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/maxhutschenreiter/document-templates/get/9f1e7ed3ccea957fdb00d77f055e2ff04829bd01.zip",
-                "reference": "9f1e7ed3ccea957fdb00d77f055e2ff04829bd01",
+                "url": "https://bitbucket.org/maxhutschenreiter/document-templates/get/c13bd41664ce08a9a12e1ccd73c15815018fb49f.zip",
+                "reference": "c13bd41664ce08a9a12e1ccd73c15815018fb49f",
                 "shasum": ""
             },
             "require": {
@@ -71,9 +71,9 @@
             "description": "Document template management package.",
             "homepage": "https://bitbucket.org/maxhutschenreiter/document-templates",
             "support": {
-                "source": "https://bitbucket.org/maxhutschenreiter/document-templates/src/9f1e7ed3ccea957fdb00d77f055e2ff04829bd01/?at=0.4.0"
+                "source": "https://bitbucket.org/maxhutschenreiter/document-templates/src/c13bd41664ce08a9a12e1ccd73c15815018fb49f/?at=0.4.1"
             },
-            "time": "2019-06-27T14:29:17+00:00"
+            "time": "2019-07-02T11:19:48+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
