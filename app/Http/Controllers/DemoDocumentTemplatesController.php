@@ -41,10 +41,9 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
         ];
     }
 
-    public function show(Request $request, $id)
+    public function show(Request $request, DocumentTemplateModelInterface $documentTemplateModel)
     {
 
-        $documentTemplateModel = DemoDocumentTemplateModel::findOrFail($id);
         $documentTemplate = DocumentTemplateFactory::build($documentTemplateModel);
 
         $templateData = $this->getTemplateData();
@@ -79,17 +78,17 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
 
     /**
      * @param Request $request
-     * @param DocumentTemplateModel $documentTemplate
+     * @param DocumentTemplateModelInterface $documentTemplateModel
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function email(Request $request, DocumentTemplateModel $documentTemplate)
+    public function email(Request $request, DocumentTemplateModelInterface $documentTemplateModel)
     {
         $user = Auth::user();
 
         $mailer = Mail::to($user);
         $mailer = $this->setBcc($mailer);
-        $mailer->send(new TemplateMailable($documentTemplate, $this->getTemplateData()));
+        $mailer->send(new TemplateMailable($documentTemplateModel, $this->getTemplateData()));
 
         return back()->with('status', sprintf('The email has been sent to %s!', $user->email));
     }
