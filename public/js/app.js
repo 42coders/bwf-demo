@@ -39351,10 +39351,7 @@ var render = function() {
               "a",
               {
                 staticClass: "btn btn-secondary mb-2",
-                attrs: {
-                  target: "_blank",
-                  href: "/document-templates" + this.id()
-                }
+                attrs: { target: "_blank", href: this.baseUrl + this.id() }
               },
               [_vm._v("Render")]
             )
@@ -51752,8 +51749,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/vernerd/www/bwf-demo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/vernerd/www/bwf-demo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/www/bwf-demo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/www/bwf-demo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
