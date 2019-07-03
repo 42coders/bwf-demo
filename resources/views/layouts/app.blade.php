@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('document-templates.index') }}">{{ __('Document templates') }}</a>
+                            <a class="nav-link" href="{{ route(config('document_templates.base_url') . '.index') }}">{{ __('Document templates') }}</a>
                         </li>
                     </ul>
 

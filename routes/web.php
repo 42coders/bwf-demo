@@ -18,11 +18,6 @@ Route::group(['middleware' => ['verified']], function() {
 
     \BWF\DocumentTemplates\DocumentTemplates::routes(DemoDocumentTemplatesController::class);
 
-    app()->bind(
-        \BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateModelInterface::class,
-        \App\DemoDocumentTemplateModel::class
-    );
-
-    Route::post('/document-templates/email/{documentTemplate?}',
-        'DemoDocumentTemplatesController@email')->name('document-templates.email');
+    Route::post( config('document_templates.base_url') . '/email/{document_template?}',
+        'DemoDocumentTemplatesController@email')->name(config('document_templates.base_url') . '.email');
 });
