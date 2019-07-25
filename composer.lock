@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1aa781eeafd9ed8e951234675ec205c4",
+    "content-hash": "b0580987f42391bb2f21abab2ae6664b",
     "packages": [
         {
             "name": "42coders/document-templates",
-            "version": "0.4.1",
+            "version": "0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/maxhutschenreiter/document-templates.git",
-                "reference": "c13bd41664ce08a9a12e1ccd73c15815018fb49f"
+                "reference": "94f023c0f63d602a34c681d812e65c44c2cd8a8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/maxhutschenreiter/document-templates/get/c13bd41664ce08a9a12e1ccd73c15815018fb49f.zip",
-                "reference": "c13bd41664ce08a9a12e1ccd73c15815018fb49f",
+                "url": "https://bitbucket.org/maxhutschenreiter/document-templates/get/94f023c0f63d602a34c681d812e65c44c2cd8a8b.zip",
+                "reference": "94f023c0f63d602a34c681d812e65c44c2cd8a8b",
                 "shasum": ""
             },
             "require": {
@@ -66,14 +66,18 @@
                 {
                     "name": "Daniel Verner",
                     "email": "daniel.verner@42coders.com"
+                },
+                {
+                    "name": "Filip Vucinic",
+                    "email": "filip@42coders.com"
                 }
             ],
             "description": "Document template management package.",
             "homepage": "https://bitbucket.org/maxhutschenreiter/document-templates",
             "support": {
-                "source": "https://bitbucket.org/maxhutschenreiter/document-templates/src/c13bd41664ce08a9a12e1ccd73c15815018fb49f/?at=0.4.1"
+                "source": "https://bitbucket.org/maxhutschenreiter/document-templates/src/94f023c0f63d602a34c681d812e65c44c2cd8a8b/?at=0.5.0"
             },
-            "time": "2019-07-02T11:19:48+00:00"
+            "time": "2019-07-25T09:36:19+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
