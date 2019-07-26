@@ -36,6 +36,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route(config('document_templates.base_url') . '.index') }}">{{ __('Document templates') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('packages.index') }}">{{ __('Packages') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
