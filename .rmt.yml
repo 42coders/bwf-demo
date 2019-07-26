@@ -18,7 +18,5 @@ _default:
     version-generator: semantic              # Simple versionning
     version-persister: changelog
     pre-release-actions:
-      changelog-update:          # Update a CHANGELOG file before the release
-        format: semantic
       composer-update:
         name: composer.json
