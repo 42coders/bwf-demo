@@ -22,7 +22,6 @@ _default:
         format: semantic
       composer-update:
         name: composer.json
-      vcs-commit: ~              # Commit the CHANGELOG
 
 # BRANCH SPECIFIC CONFIG
 #  On master, we override the general config
@@ -34,4 +33,3 @@ master:
             format: semantic
         composer-update:
             name: composer.json
-        vcs-commit: ~              # Commit the CHANGELOG
