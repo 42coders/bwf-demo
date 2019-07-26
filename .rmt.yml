@@ -9,7 +9,7 @@ _default:
     #   - relative/path/to/your-own-sript.php
     prerequisites:
      - working-copy-check
-     - display-last-changes
+#     - display-last-changes
 
     # GENERAL CONFIG
     #  Apply to all branches except the one from the 'branch-specific' section
