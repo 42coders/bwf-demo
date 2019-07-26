@@ -3,4 +3,5 @@ VERSION 1  USE VERSIONING
 =========================
 
    Version 1.0 - Use versioning
+      26/07/2019 10:56  1.0.1  Show package versions and app version
       26/07/2019 10:56  1.0.0  initial release
