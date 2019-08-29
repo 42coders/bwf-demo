@@ -36,5 +36,7 @@ return [
 
     'model_class' => \BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateModel::class,
 
-    'base_url' => 'document-templates'
+    'base_url' => 'document-templates',
+
+    'pdf_renderer' => \BWF\DocumentTemplates\Renderers\DomPdfRenderer::class
 ];

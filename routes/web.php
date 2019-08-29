@@ -21,5 +21,8 @@ Route::group(['middleware' => ['verified']], function() {
     Route::post( config('document_templates.base_url') . '/email/{document_template?}',
         'DemoDocumentTemplatesController@email')->name(config('document_templates.base_url') . '.email');
 
+    Route::get( config('document_templates.base_url') . '/pdf/{document_template}',
+        'DemoDocumentTemplatesController@pdf')->name(config('document_templates.base_url') . '.pdf');
+
     Route::get('/packages', 'PackagesController@index')->name('packages.index');
 });

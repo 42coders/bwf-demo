@@ -56,6 +56,22 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
 
     }
 
+    public function pdf(Request $request, DocumentTemplateModelInterface $documentTemplateModel)
+    {
+
+        $documentTemplate = DocumentTemplateFactory::build($documentTemplateModel);
+
+        $templateData = $this->getTemplateData();
+
+        foreach ($templateData as $name => $data) {
+            $documentTemplate->addTemplateData($data, $name);
+        }
+
+        $pdf = $documentTemplate->renderPdf(storage_path( 'app/' . $documentTemplateModel->name . '.pdf'));
+        return response()->file($pdf);
+
+    }
+
     /**
      * @param PendingMail $mailer
      * @return PendingMail

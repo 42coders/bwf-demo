@@ -17,7 +17,7 @@
                         <th>@lang('Layout')</th>
                         <th>@lang('Created at')</th>
                         <th>@lang('Modified at')</th>
-                        <th colspan="2" class="text-center">@lang('Actions')</th>
+                        <th colspan="3" class="text-center">@lang('Actions')</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,6 +30,9 @@
                                 <td>{{$documentTempate->updated_at}}</td>
                                 <td>
                                     <a class="btn btn btn-primary" target="_blank" href="{{route(config('document_templates.base_url') . '.show', $documentTempate->id)}}">Render</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn btn-primary" target="_blank" href="{{route(config('document_templates.base_url') . '.pdf', $documentTempate->id)}}">PDF</a>
                                 </td>
                                 <td>
                                     <form method="post" action="{{route( config('document_templates.base_url') . '.email', $documentTempate->id)}}">
