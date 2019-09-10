@@ -24,17 +24,18 @@ class EditableTemplatesTableSeeder extends Seeder
             'document_template_id' => $documentTemplate->id,
             'name' => 'order_items',
             'content' => '
-                <p>{% for order in orders %}</p>
-                
-                <div class="invoice-item">
-                <p><i class="uil uil-cart">&nbsp;</i></p>
-                
-                <p class="item">{{order.description}}</p>
-                
-                <p class="item item-price">${{order.price}}</p>
-                </div>
-                
-                <p>{% endfor %}</p>'
+                {% for order in orders %}
+                    <tr>
+                        <td>
+                            {{order.description}}
+                        </td>
+                        <td>1</td>
+                        <td>
+                            €{{order.price}}
+                        </td>
+                    </tr>
+                {% endfor %}
+                '
         ])->save();
 
         $documentTemplate = \BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateModel::create([
