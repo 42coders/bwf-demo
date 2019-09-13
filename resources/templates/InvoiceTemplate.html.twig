@@ -60,12 +60,10 @@
     <table width="100%">
         <tr>
             <td align="left" style="width: 40%;">
-                <h3>John Doe</h3>
-                <pre>
-Street 15
-123456 City
-United Kingdom
+                {% block customer_details %}
+                {% endblock %}
 <br/><br/>
+<pre>
 Date: 2018-01-01
 Identifier: #uniquehash
 Status: Paid
@@ -96,27 +94,8 @@ Status: Paid
 
 <div class="invoice">
     <h3>Invoice specification #123</h3>
-    <table width="100%">
-        <thead>
-        <tr>
-            <th>Description</th>
-            <th>Quantity</th>
-            <th>Total</th>
-        </tr>
-        </thead>
-        <tbody>
         {% block order_items %}
         {% endblock %}
-        </tbody>
-
-        <tfoot>
-        <tr>
-            <td colspan="1"></td>
-            <td align="left">Total</td>
-            <td align="left" class="gray">€60,-</td>
-        </tr>
-        </tfoot>
-    </table>
 </div>
 
 <div class="information" style="position: absolute; bottom: 0;">
