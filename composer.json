@@ -10,13 +10,6 @@
   "license": "MIT",
   "repositories": [
     {
-      "type": "path",
-      "url": "../document-templates",
-      "options": {
-        "symlink": true
-      }
-    },
-    {
         "type": "vcs",
         "url": "https://bitbucket.org/maxhutschenreiter/document-templates"
     }
