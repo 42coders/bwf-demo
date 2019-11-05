@@ -41,7 +41,7 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
         ];
     }
 
-    public function show(Request $request, DocumentTemplateModelInterface $documentTemplateModel)
+    public function show(DocumentTemplateModelInterface $documentTemplateModel)
     {
 
         $documentTemplate = DocumentTemplateFactory::build($documentTemplateModel);

@@ -4,12 +4,7 @@ The **Business Workflow Framework** is a collection of packages that can be used
 
 ## Getting started
 ### Installation
-Clone the source code from:
-```
-https://bitbucket.org/maxhutschenreiter/bwf-demo.git
-```
-
-Install the required packages with composer: `composer install`.
+Clone the source code, and install the required packages with composer: `composer install`.
 
 Create database, and set up the parameters in the `.env` file, generate application key with the `php artisan key:generate` command. 
 

@@ -11,7 +11,7 @@
   "repositories": [
     {
         "type": "vcs",
-        "url": "https://bitbucket.org/maxhutschenreiter/document-templates"
+        "url": "https://github.com/42coders/document-templates"
     }
   ],
   "require": {
