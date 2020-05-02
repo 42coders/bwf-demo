@@ -38,5 +38,5 @@ return [
 
     'base_url' => 'document-templates',
 
-    'pdf_renderer' => \BWF\DocumentTemplates\Renderers\DomPdfRenderer::class
+    'pdf_renderer' => \BWF\DocumentTemplates\Renderers\BrowsershotPdfRenderer::class
 ];

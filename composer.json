@@ -7,10 +7,19 @@
     "framework",
     "laravel"
   ],
+  "repositories": [
+        {
+            "type": "path",
+            "url": "../document-templates",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
   "license": "MIT",
   "require": {
     "php": "^7.1.3",
-    "42coders/document-templates": "^1.0.0",
+    "42coders/document-templates": "*",
     "fideloper/proxy": "^4.0",
     "laravel/framework": "5.8.*",
     "laravel/tinker": "^1.0"
