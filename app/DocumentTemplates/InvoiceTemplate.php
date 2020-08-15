@@ -17,6 +17,8 @@ class InvoiceTemplate implements MailTemplateInterface
         return [
             $this->dataSource($this->testOrders[0], 'order', true, 'orders'),
             $this->dataSource(new User(), 'user'),
+            $this->dataSource('', 'text'),
+            $this->dataSource(null, 'number'),
         ];
     }
 

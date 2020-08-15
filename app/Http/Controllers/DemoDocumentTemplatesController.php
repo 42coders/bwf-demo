@@ -37,7 +37,9 @@ class DemoDocumentTemplatesController extends DocumentTemplatesController
             'user' => Auth::user(),
             'orders' => $this->getTestOrders(),
             'foods' => $this->getFood(),
-            'dates' => $this->getDates()
+            'dates' => $this->getDates(),
+            'text'  => 'coders',
+            'number' => 42
         ];
     }
 
