@@ -2,7 +2,7 @@
   "name": "42coders/bwf-demo",
   "type": "project",
   "description": "Business Workflow Framework demo application",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "keywords": [
     "framework",
     "laravel"
