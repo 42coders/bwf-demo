@@ -71,5 +71,27 @@ United Kingdom
 </pre>
                 '
         ])->save();
+
+
+        $documentTemplate = \BWF\DocumentTemplates\DocumentTemplates\DocumentTemplateModel::create([
+            'name' => 'Newsletter',
+            'document_class' => \App\DocumentTemplates\NewsletterTemplate::class,
+            'layout' => 'NewsletterTemplate.html.twig'
+        ]);
+
+        $documentTemplate->save();
+
+
+        \BWF\DocumentTemplates\EditableTemplates\EditableTemplate::create([
+            'document_template_id' => $documentTemplate->id,
+            'name' => 'title',
+            'content' => 'This is the title'
+        ])->save();
+
+        \BWF\DocumentTemplates\EditableTemplates\EditableTemplate::create([
+            'document_template_id' => $documentTemplate->id,
+            'name' => 'content',
+            'content' => '<p>This is the content</p>'
+        ])->save();
     }
 }
