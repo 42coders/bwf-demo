@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -11,7 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 1)->create(
+        \App\User::factory()->create(
             [
                 'name' => 'Administrator',
                 'email' => 'admin@bwf',
@@ -19,7 +21,7 @@ class UsersTableSeeder extends Seeder
             ]
         );
 
-        factory(App\User::class, 1)->create(
+        \App\User::factory()->create(
             [
                 'name' => 'User',
                 'email' => 'user@bwf',
