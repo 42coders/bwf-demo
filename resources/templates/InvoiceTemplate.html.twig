@@ -72,7 +72,7 @@ Status: Paid
 
             </td>
             <td align="center">
-                <img src="https://42coders.com/wp-content/uploads/elementor/thumbs/logo-o9jp5a9c6jnn02f7yrqrfuzv6pr1lrqw5amfzuffv4.png" alt="Logo" width="64" class="logo"/>
+                <img src="https://42coders.com/img/42coderslogo_small.png" alt="Logo" width="64" class="logo"/>
             </td>
             <td align="right" style="width: 40%;">
 
@@ -98,13 +98,14 @@ Status: Paid
         {% endblock %}
 </div>
 
-<div class="information" style="position: absolute; bottom: 0;">
-    <table width="100%">
+<div class="information" style="position: absolute; bottom: 0; width:100%">
+    <table style="">
         <tr>
             <td align="left" style="width: 50%;">
-{#                &copy; {{ date('Y') }} {{ config('app.url') }} - All rights reserved.#}
+                {% block footer %}
+                {% endblock %}
             </td>
-            <td align="right" style="width: 50%;">
+            <td align="right" style="width: 100%;">
                 42coders
             </td>
         </tr>
