@@ -8,11 +8,11 @@
     "packages": [
         {
             "name": "42coders/document-templates",
-            "version": "5.2.0",
+            "version": "6.0.0",
             "dist": {
                 "type": "path",
                 "url": "../document-templates",
-                "reference": "1b4bd5b3db928dc0a14ea66c63ea40ec4c86f712"
+                "reference": "37e2a94aa0292000f7ac43a160d75826ee974354"
             },
             "require": {
                 "barryvdh/laravel-dompdf": "^1.0 || ^2.0",
