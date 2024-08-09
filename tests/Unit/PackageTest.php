@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Package;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class PackageTest extends TestCase
@@ -12,10 +13,9 @@ class PackageTest extends TestCase
      * @param $expectedName
      * @param $expectedVersion
      * @param $expectedDescription
-     * @test
-     * @dataProvider packageDataProvider
      */
-    public function createPackageObjectFromString(
+    #[DataProvider('packageDataProvider')]
+    public function testCreatePackageObjectFromString(
         $rawPackageObject,
         $expectedName,
         $expectedVersion,
@@ -28,7 +28,7 @@ class PackageTest extends TestCase
         $this->assertEquals($expectedDescription, $package->getDescription());
     }
 
-    public function packageDataProvider()
+    public static function packageDataProvider()
     {
         $installedPackages = json_decode(file_get_contents(__DIR__ . '/installed.json'));
 

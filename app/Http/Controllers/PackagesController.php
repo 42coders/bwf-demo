@@ -22,7 +22,7 @@ class PackagesController extends Controller
         $packages = [];
         $installedPackages = $this->getInstalledPackages();
 
-        foreach ($installedPackages as $installedPackage) {
+        foreach ($installedPackages->packages as $installedPackage) {
             if (strstr($installedPackage->name, '42coders')) {
                 $packages[] = new Package($installedPackage);
             }
@@ -33,7 +33,7 @@ class PackagesController extends Controller
     /**
      * @return array
      */
-    private function getInstalledPackages(): array
+    private function getInstalledPackages(): mixed
     {
         $installedPackages = json_decode(file_get_contents(base_path('vendor/composer') . '/installed.json'));
         return $installedPackages;
